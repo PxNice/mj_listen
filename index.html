@@ -1,0 +1,274 @@
+<html>
+<title> 【听牌测试】 </title>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+
+<style>
+    * {
+        /* margin: 0; */
+        padding: 0;
+        list-style: none;
+        user-select: none;
+        -webkit-user-drag: none;
+    }
+
+    .row {
+        height: 180px;
+        position: relative;
+        background-color: #04795d;
+        margin-top: 20px;
+        border-left: 2px solid #000000;
+        border-right: 2px solid #000000;
+        border-top: 2px solid #000000;
+        border-bottom: 2px solid #000000;
+        border-radius: 20px !important;
+    }
+
+    .cardrow,
+    .smcardrow {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        min-width: 800px;
+        transform: translate(-50%, 0)
+    }
+
+    .smcardrow {
+        top: 0;
+    }
+
+    .card,
+    .smcard {
+        border-left: 2px solid #000000;
+        border-right: 2px solid #000000;
+        border-top: 2px solid #000000;
+        border-bottom: 2px solid #000000;
+        width: 50px;
+        height: 70px;
+        margin-right: 1px;
+        border-radius: 12px !important;
+        background-color: whitesmoke;
+        position: relative;
+        float: left;
+    }
+
+    .tag_card {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        height: 65%;
+    }
+
+    .tag_ting {
+        width: 30%;
+    }
+
+    .smcard {
+        width: 30px;
+        height: 45px;
+        border-radius: 6px !important;
+    }
+
+    .textCard {
+        width: 100%;
+        height: 100%;
+        text-align: initial;
+        position: absolute;
+        resize: none
+    }
+</style>
+
+<body>
+
+    <div class="row" style="background-color: bisque; height: 220px;border-radius: 0px !important;">
+        <div style="float: left; width: 100% ;height: 220px; position: absolute;">
+            <textarea class="textCard"></textarea>
+        </div>
+    </div>
+
+    <div class="row" style="background-color: bisque; height: 50px;border-radius: 0px !important;">
+        <div style="float: left; width: 100% ;height: 50px; position: absolute;">
+            <input style="height: 100%; width: 16%;" type="text" class="magic" placeholder="填写癞子值" value="">
+            <button class="showCardsBtn"
+            style="height: 100% ;width: 83%; position: absolute; right: 0; background-color: burlywood;">
+            渲染查听
+        </button>
+        </div>
+    </div>
+
+
+
+    <div class="row">
+        <div class="smcardrow">
+
+            <!-- <div class="smcard"><img class="tag_card" src="res/img/mjCard_21.png" alt=""></div>
+            <div class="smcard"><img class="tag_card" src="res/img/mjCard_21.png" alt=""></div>
+            <div class="smcard"><img class="tag_card" src="res/img/mjCard_21.png" alt=""></div>
+            <div class="smcard"><img class="tag_card" src="res/img/mjCard_21.png" alt=""></div> -->
+        </div>
+        <div class="cardrow">
+            <!-- <div class="card">
+                <img class="tag_ting" src="res/img/mjCard_tag_ting.png" alt="">
+                <img class="tag_card" src="res/img/mjCard_21.png" alt="">
+            </div>
+              <div class="card">
+                <img class="tag_ting" src="res/img/mjCard_tag_ting.png" alt="">
+                <img class="tag_card" src="res/img/mjCard_21.png" alt="">
+            </div>
+            <div class="card">
+                <img class="tag_ting" src="res/img/mjCard_tag_ting.png" alt="">
+                <img class="tag_card" src="res/img/mjCard_21.png" alt="">
+            </div>
+            <div class="card">
+                <img class="tag_ting" src="res/img/mjCard_tag_ting.png" alt="">
+                <img class="tag_card" src="res/img/mjCard_21.png" alt="">
+            </div> -->
+        </div>
+    </div>
+
+    <div  class="maskDiv" style="    text-align: center; width: 100%;height: 100%;background-color: #000;opacity: .6;filter: alpha(opacity=60);position: absolute;left: 0;top: 0;z-index: 1100;
+            "> <b style="color: rgb(216, 103, 103)">加载听牌表。。。</b></div>
+</body>
+
+</html>
+<!-- <script type="text/javascript" src="../../bundle.js"></script> -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="./plugins/plugins.js"></script>
+<script>
+    var global = global || window;
+    global.lodash = require("lodash");
+    global.$ = require("jquery");
+    global.axios = require("axios");
+    global.module = null;
+</script>
+<script src="./dist/bundle.js"></script>
+<script>
+    window.main.getInstance(function () {
+        $(".maskDiv").hide();
+    });
+</script>
+
+<script>
+    var cards16;
+    var cardsTing;
+    var fun;
+    var magic;
+    var allCard;
+    var cardCount;
+    $(function () {
+        $(".showCardsBtn").on('click', function () {
+            magic = $(".magic").val();
+            magic = Math.floor(magic / 16) * 10 + magic % 16
+            var vl = $(".textCard").val();
+            if (magic == "" || vl == "" ) {
+                alert("手牌和癞子 都是必填项！")
+            }
+            cards16 = _16to10(vl.split(','));
+            $(".cardrow").html("");
+            cardCount = cards16.length;
+            if(cardCount > 14){
+                alert("牌数量不规范")
+            }
+            if ((cardCount-2) == 0 ||  (cardCount-2) % 3 == 0) {
+                cardsTing = window.main.getInstance().getListen(cards16, magic, allCard);
+                // cardsTing = t.isNativeHu(cards16, magic, allCard);
+                console.log(cardsTing);
+                for (var x in cards16) {
+                    let b = false;
+                    for (var y in cardsTing) {
+                        if (y == cards16[x]) {
+                            b = true;
+                            continue;
+                        }
+                    }
+                    if (magic && cards16[x] == magic) {
+                        if (b) {
+                            $(".cardrow").append(' <div class="card" item = ' + cards16[x] + ' style="background-color: #ffd92c" ><img class="tag_ting" src="res/img/mjCard_tag_ting.png" alt=""><img class="tag_card" src="res/img/mjCard_' + cards16[x] + '.png" alt=""></div>');
+                        } else {
+                            $(".cardrow").append(' <div class="card" item = ' + cards16[x] + ' style="background-color: #ffd92c" ><img class="tag_card" src="res/img/mjCard_' + cards16[x] + '.png" alt=""></div>');
+                        }
+
+                    } else {
+                        if (b) {
+                            $(".cardrow").append(' <div class="card" item = ' + cards16[x] + '><img class="tag_ting" src="res/img/mjCard_tag_ting.png" alt=""><img class="tag_card" src="res/img/mjCard_' + cards16[x] + '.png" alt=""></div>');
+                        } else {
+                            $(".cardrow").append(' <div class="card" item = ' + cards16[x] + '><img class="tag_card" src="res/img/mjCard_' + cards16[x] + '.png" alt=""></div>');
+                        }
+
+                    }
+                }
+            } else {
+                for (var x in cards16) {
+                    if (magic && cards16[x] == magic) {
+                        $(".cardrow").append(' <div class="card" item = ' + cards16[x] + ' style="background-color: #ffd92c" ><img class="tag_card" src="res/img/mjCard_' + cards16[x] + '.png" alt=""></div>');
+                    } else {
+                        $(".cardrow").append(' <div class="card" item = ' + cards16[x] + '><img class="tag_card" src="res/img/mjCard_' + cards16[x] + '.png" alt=""></div>');
+                    }
+                }
+            }
+        }.bind(this))
+
+        $(".cardrow").on('click', ".card", function (event) {
+            $(".smcardrow").html("");
+            event.preventDefault();
+            event.stopPropagation();
+            let top = Number($(this).css("top").replace("px", ""));
+            $(this).parent().find(".card").css("top", "0px");
+            if (top >= 0) {
+                $(this).css("top", "-10px");
+                if ((cardCount-1) == 0 ||  (cardCount-1) % 3 == 0) {
+                    var cardNum = $(this).attr("item");
+                    if (cardsTing[cardNum]) {
+                        for (var x in cardsTing[cardNum]) {
+                            if (magic && cardsTing[cardNum][x] == magic) {
+                                $(".smcardrow").append(' <div class="smcard" style="background-color: #ffd92c"><img class="tag_card" src="res/img/mjCard_' + cardsTing[cardNum][x] + '.png" alt=""></div>');
+                            } else {
+                                $(".smcardrow").append(' <div class="smcard"><img class="tag_card" src="res/img/mjCard_' + cardsTing[cardNum][x] + '.png" alt=""></div>');
+                            }
+                        }
+                    }
+                } else if ((cardCount-2) == 0 ||  (cardCount-2) % 3 == 0) {
+                    // cardsTing = t.isComeOneHu(cards16, 21, cards16);
+                    cardsTing = window.main.getInstance().isComeOneHu(cards16, magic, allCard);
+                    if (cardsTing && cardsTing.length > 0) {
+                        for (var x in cardsTing) {
+                            if (magic && cardsTing[x] == magic) {
+                                $(".smcardrow").append(' <div class="smcard" style="background-color: #ffd92c"><img class="tag_card" src="res/img/mjCard_' + cardsTing[x] + '.png" alt=""></div>');
+                            } else {
+                                $(".smcardrow").append(' <div class="smcard"><img class="tag_card" src="res/img/mjCard_' + cardsTing[x] + '.png" alt=""></div>');
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        $(".row").on('click', function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+            $(this).find(".card").css("top", "0px");
+            $(".smcardrow").html("");
+        });
+
+        function _16to10(CardArr) {
+            let newArr = [];
+            let magicArr = [];
+            for (var x in CardArr) {
+                let num = Math.floor(CardArr[x] / 16) * 10 + CardArr[x] % 16;
+                if (num == magic) {
+                    magicArr.push(num);
+                } else {
+                    newArr.push(num);
+                }
+            }
+            newArr.sort(function (a, b) {
+                return a - b
+            });
+            for (var x in newArr) {
+                magicArr.push(newArr[x])
+            }
+            return magicArr;
+        }
+    })
+
+</script>

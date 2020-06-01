@@ -24,6 +24,6 @@ yarn 或者 npm 安装依赖包
 ![图片名称](https://images.gitee.com/uploads/images/2019/0813/144330_2304f68f_5138898.png "1.png")  
 ![图片名称](https://images.gitee.com/uploads/images/2019/0813/144339_2379241a_5138898.png "2.png")  
 
-初次提交，代码还是有点粗糙，不算优美，欢迎各位大佬指点。
+初次提交，代码还是有点粗糙，不算优美。
 
 

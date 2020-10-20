@@ -3,8 +3,6 @@
 
 使用:
 
-测试工具是web版本 需要起一个服务 访问Index.html
-
 tsrsc 是听牌逻辑的ts代码 需要使用tsc编译
 
 yarn 或者 npm 安装依赖包

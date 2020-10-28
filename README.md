@@ -1,13 +1,6 @@
 # mj_listen
 目前是针对一款麻将做达到番数才有的听牌提示，附带网页测试工具
 
-使用:
-
-tsrsc 是听牌逻辑的ts代码 需要使用tsc编译
-
-yarn 或者 npm 安装依赖包
-
-
 牌值对应：
 
 万：0x01,0x02,0x03,0x04,0x05,0x06,0x07,0x08,0x09
@@ -22,6 +15,6 @@ yarn 或者 npm 安装依赖包
 ![图片名称](https://images.gitee.com/uploads/images/2019/0813/144330_2304f68f_5138898.png "1.png")  
 ![图片名称](https://images.gitee.com/uploads/images/2019/0813/144339_2379241a_5138898.png "2.png")  
 
-初次提交，代码还是有点粗糙，不算优美。
+
 
 

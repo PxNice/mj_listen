@@ -1,12 +1,12 @@
 namespace mj {
-    export class mj_listen {
+    export class MjListen {
 
-        static __Ins__: mj_listen = null;
-        static getInstance(): mj_listen {
-            if (mj_listen.__Ins__ == null) {
-                mj_listen.__Ins__ = new mj_listen();
+        static __Ins__: MjListen = null;
+        static getInstance(): MjListen {
+            if (MjListen.__Ins__ == null) {
+                MjListen.__Ins__ = new MjListen();
             }
-            return mj_listen.__Ins__;
+            return MjListen.__Ins__;
         }
 
 
@@ -19,7 +19,6 @@ namespace mj {
                     ting[x].push(magic);
                 }
             }
-            console.log("听牌数据=>", ting);
             console.log('【查听耗时】=>' + (Date.now() - t));
             return ting
         }
@@ -45,22 +44,21 @@ namespace mj {
         public isComeOneHu(cards, magic) {
             var t = Date.now();
             //这里传入的是 1-37的牌型
-            let tempMagicIndex = changeCard.getInstance().trimCardIndex(magic);          //  赖子牌值  转  索引数组
-            let tempCards = changeCard.getInstance().trimCardArrNum(cards);              //  正常牌值  转  1-34 牌值
-            var cardIndexArr = changeCard.getInstance().changeIndexArr(tempCards);
+            let tempMagicIndex = ChangeCard.getInstance().trimCardIndex(magic);          //  赖子牌值  转  索引数组
+            let tempCards = ChangeCard.getInstance().trimCardArrNum(cards);              //  正常牌值  转  1-34 牌值
+            var cardIndexArr = ChangeCard.getInstance().changeIndexArr(tempCards);
             var tingNum = [];
             for (var j = 0; j < 34; j++) {
                 cardIndexArr[j] += 1;
                 var resPP = mj_hulib.getInstance().get_hu_info(cardIndexArr, tempMagicIndex);
                 if (resPP) {
-                    tingNum.push(changeCard.getInstance().indexChangeZi(j));
+                    tingNum.push(ChangeCard.getInstance().indexChangeZi(j));
                 }
                 cardIndexArr[j] -= 1;
             }
             if (tingNum.indexOf(magic) < 0 && tingNum.length > 0) {
                 tingNum.push(magic);
             }
-            console.log("自己=>", tingNum);
             console.log('OverTime=>' + (Date.now() - t));
             return tingNum
         }

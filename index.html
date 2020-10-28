@@ -101,28 +101,17 @@
     <div class="row">
         <div class="smcardrow">
 
-            <!-- <div class="smcard"><img class="tag_card" src="res/img/mjCard_21.png" alt=""></div>
-            <div class="smcard"><img class="tag_card" src="res/img/mjCard_21.png" alt=""></div>
-            <div class="smcard"><img class="tag_card" src="res/img/mjCard_21.png" alt=""></div>
-            <div class="smcard"><img class="tag_card" src="res/img/mjCard_21.png" alt=""></div> -->
+            <!-- 
+                <div class="smcard"><img class="tag_card" src="res/img/mj_card_21.png" alt=""></div>
+            -->
         </div>
         <div class="cardrow">
-            <!-- <div class="card">
-                <img class="tag_ting" src="res/img/mjCard_tag_ting.png" alt="">
-                <img class="tag_card" src="res/img/mjCard_21.png" alt="">
-            </div>
-              <div class="card">
-                <img class="tag_ting" src="res/img/mjCard_tag_ting.png" alt="">
-                <img class="tag_card" src="res/img/mjCard_21.png" alt="">
-            </div>
-            <div class="card">
-                <img class="tag_ting" src="res/img/mjCard_tag_ting.png" alt="">
-                <img class="tag_card" src="res/img/mjCard_21.png" alt="">
-            </div>
-            <div class="card">
-                <img class="tag_ting" src="res/img/mjCard_tag_ting.png" alt="">
-                <img class="tag_card" src="res/img/mjCard_21.png" alt="">
-            </div> -->
+            <!-- 
+                <div class="card">
+                    <img class="tag_ting" src="res/img/tag_mj_ting.png" alt="">
+                    <img class="tag_card" src="res/img/mj_card_21.png" alt="">
+                 </div>
+            -->
         </div>
     </div>
 
@@ -183,16 +172,16 @@
                     }
                     if (magic && cards16[x] == magic) {
                         if (b) {
-                            $(".cardrow").append(' <div class="card" item = ' + cards16[x] + ' style="background-color: #ffd92c" ><img class="tag_ting" src="res/img/mjCard_tag_ting.png" alt=""><img class="tag_card" src="res/img/mjCard_' + cards16[x] + '.png" alt=""></div>');
+                            $(".cardrow").append(' <div class="card" item = ' + cards16[x] + ' style="background-color: #ffd92c" ><img class="tag_ting" src="res/img/tag_mj_ting.png" alt=""><img class="tag_card" src="res/img/mj_card_' + cards16[x] + '.png" alt=""></div>');
                         } else {
-                            $(".cardrow").append(' <div class="card" item = ' + cards16[x] + ' style="background-color: #ffd92c" ><img class="tag_card" src="res/img/mjCard_' + cards16[x] + '.png" alt=""></div>');
+                            $(".cardrow").append(' <div class="card" item = ' + cards16[x] + ' style="background-color: #ffd92c" ><img class="tag_card" src="res/img/mj_card_' + cards16[x] + '.png" alt=""></div>');
                         }
 
                     } else {
                         if (b) {
-                            $(".cardrow").append(' <div class="card" item = ' + cards16[x] + '><img class="tag_ting" src="res/img/mjCard_tag_ting.png" alt=""><img class="tag_card" src="res/img/mjCard_' + cards16[x] + '.png" alt=""></div>');
+                            $(".cardrow").append(' <div class="card" item = ' + cards16[x] + '><img class="tag_ting" src="res/img/tag_mj_ting.png" alt=""><img class="tag_card" src="res/img/mj_card_' + cards16[x] + '.png" alt=""></div>');
                         } else {
-                            $(".cardrow").append(' <div class="card" item = ' + cards16[x] + '><img class="tag_card" src="res/img/mjCard_' + cards16[x] + '.png" alt=""></div>');
+                            $(".cardrow").append(' <div class="card" item = ' + cards16[x] + '><img class="tag_card" src="res/img/mj_card_' + cards16[x] + '.png" alt=""></div>');
                         }
 
                     }
@@ -200,9 +189,9 @@
             } else {
                 for (var x in cards16) {
                     if (magic && cards16[x] == magic) {
-                        $(".cardrow").append(' <div class="card" item = ' + cards16[x] + ' style="background-color: #ffd92c" ><img class="tag_card" src="res/img/mjCard_' + cards16[x] + '.png" alt=""></div>');
+                        $(".cardrow").append(' <div class="card" item = ' + cards16[x] + ' style="background-color: #ffd92c" ><img class="tag_card" src="res/img/mj_card_' + cards16[x] + '.png" alt=""></div>');
                     } else {
-                        $(".cardrow").append(' <div class="card" item = ' + cards16[x] + '><img class="tag_card" src="res/img/mjCard_' + cards16[x] + '.png" alt=""></div>');
+                        $(".cardrow").append(' <div class="card" item = ' + cards16[x] + '><img class="tag_card" src="res/img/mj_card_' + cards16[x] + '.png" alt=""></div>');
                     }
                 }
             }
@@ -221,9 +210,9 @@
                     if (cardsTing[cardNum]) {
                         for (var x in cardsTing[cardNum]) {
                             if (magic && cardsTing[cardNum][x] == magic) {
-                                $(".smcardrow").append(' <div class="smcard" style="background-color: #ffd92c"><img class="tag_card" src="res/img/mjCard_' + cardsTing[cardNum][x] + '.png" alt=""></div>');
+                                $(".smcardrow").append(' <div class="smcard" style="background-color: #ffd92c"><img class="tag_card" src="res/img/mj_card_' + cardsTing[cardNum][x] + '.png" alt=""></div>');
                             } else {
-                                $(".smcardrow").append(' <div class="smcard"><img class="tag_card" src="res/img/mjCard_' + cardsTing[cardNum][x] + '.png" alt=""></div>');
+                                $(".smcardrow").append(' <div class="smcard"><img class="tag_card" src="res/img/mj_card_' + cardsTing[cardNum][x] + '.png" alt=""></div>');
                             }
                         }
                     }
@@ -233,9 +222,9 @@
                     if (cardsTing && cardsTing.length > 0) {
                         for (var x in cardsTing) {
                             if (magic && cardsTing[x] == magic) {
-                                $(".smcardrow").append(' <div class="smcard" style="background-color: #ffd92c"><img class="tag_card" src="res/img/mjCard_' + cardsTing[x] + '.png" alt=""></div>');
+                                $(".smcardrow").append(' <div class="smcard" style="background-color: #ffd92c"><img class="tag_card" src="res/img/mj_card_' + cardsTing[x] + '.png" alt=""></div>');
                             } else {
-                                $(".smcardrow").append(' <div class="smcard"><img class="tag_card" src="res/img/mjCard_' + cardsTing[x] + '.png" alt=""></div>');
+                                $(".smcardrow").append(' <div class="smcard"><img class="tag_card" src="res/img/mj_card_' + cardsTing[x] + '.png" alt=""></div>');
                             }
                         }
                     }

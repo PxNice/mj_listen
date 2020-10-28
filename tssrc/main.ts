@@ -58,10 +58,10 @@ class main {
 
     init(call) {
         let timer = new Date().getTime();
-        mj.mj_tbale_mgr.getInstance().init();
+        mj.MjTbaleMgr.getInstance().init();
         Promise.all([
-            mj.mj_tbale_mgr.getInstance().LoadTable(),
-            mj.mj_tbale_mgr.getInstance().LoadFengTable(),
+            mj.MjTbaleMgr.getInstance().LoadTable(),
+            mj.MjTbaleMgr.getInstance().LoadFengTable(),
         ]).then(function () {
             console.log('【牌型表加载用时】 ', (new Date().getTime() - timer) / 1000 + '秒');
             call && call();
@@ -69,11 +69,11 @@ class main {
     }
 
     getListen(handCards, magic) {
-        return mj.mj_listen.getInstance().getListen(handCards, magic);
+        return mj.MjListen.getInstance().getListen(handCards, magic);
     }
 
     isComeOneHu(handCards, magic) {
-        return mj.mj_listen.getInstance().isComeOneHu(handCards, magic);
+        return mj.MjListen.getInstance().isComeOneHu(handCards, magic);
     }
 }
 

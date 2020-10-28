@@ -1,12 +1,12 @@
 namespace mj {
-export class mj_table {
+export class MjTable {
 
-    static __Ins__: mj_table = null;
-    static getInstance(): mj_table {
-        if (mj_table.__Ins__ == null) {
-            mj_table.__Ins__ = new mj_table();
+    static __Ins__: MjTable = null;
+    static getInstance(): MjTable {
+        if (MjTable.__Ins__ == null) {
+            MjTable.__Ins__ = new MjTable();
         }
-        return mj_table.__Ins__;
+        return MjTable.__Ins__;
     }
 
 

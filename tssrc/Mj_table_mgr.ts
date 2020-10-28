@@ -1,13 +1,13 @@
 // import mj_table from "./table";
 namespace mj {
-    export class mj_tbale_mgr {
+    export class MjTbaleMgr {
 
-        static __Ins__: mj_tbale_mgr = null;
-        static getInstance(): mj_tbale_mgr {
-            if (mj_tbale_mgr.__Ins__ == null) {
-                mj_tbale_mgr.__Ins__ = new mj_tbale_mgr();
+        static __Ins__: MjTbaleMgr = null;
+        static getInstance(): MjTbaleMgr {
+            if (MjTbaleMgr.__Ins__ == null) {
+                MjTbaleMgr.__Ins__ = new MjTbaleMgr();
             }
-            return mj_tbale_mgr.__Ins__;
+            return MjTbaleMgr.__Ins__;
         }
 
         m_tbl = {};
@@ -17,22 +17,22 @@ namespace mj {
 
         public init() {
             for (let i = 0; i < 5; i++) {
-                this.m_tbl[i] = new mj_table();
+                this.m_tbl[i] = new MjTable();
                 this.m_tbl[i].init();
             }
 
             for (let i = 0; i < 5; i++) {
-                this.m_eye_tbl[i] = new mj_table();
+                this.m_eye_tbl[i] = new MjTable();
                 this.m_eye_tbl[i].init();
             }
 
             for (let i = 0; i < 5; i++) {
-                this.m_feng_tbl[i] = new mj_table();
+                this.m_feng_tbl[i] = new MjTable();
                 this.m_feng_tbl[i].init();
             }
 
             for (let i = 0; i < 5; i++) {
-                this.m_feng_eye_tbl[i] = new mj_table();
+                this.m_feng_eye_tbl[i] = new MjTable();
                 this.m_feng_eye_tbl[i].init();
             }
         }

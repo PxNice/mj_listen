@@ -147,7 +147,7 @@ namespace mj {
                 else if (yu == 2) {
                     eye = true;
                 }
-                if (find || mj_tbale_mgr.getInstance().check(key, i, eye, chi)) {
+                if (find || MjTbaleMgr.getInstance().check(key, i, eye, chi)) {
                     let item = ptbl.m[anum][ptbl.m_num[anum]];
                     ptbl.m_num[anum]++;
                     item.eye = eye;
